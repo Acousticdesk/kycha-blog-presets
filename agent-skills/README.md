@@ -1,43 +1,61 @@
 # Agent Skills for AI Agents
 
-A curated collection of battle-tested Agent Skills (SKILL.md definitions) that I use daily in real-world AI engineering workflows. These skills encode repeatable patterns for planning, specs, domain reasoning, safety constraints, and deterministic execution - helping agents produce predictable, maintainable, and production-ready output instead of vibe-driven improvisation.
+A curated collection of **battle-tested Agent Skills (SKILL.md definitions)** used daily in real-world AI engineering and agent-assisted development. These skills encode **repeatable patterns for planning, specification writing, domain reasoning, safety constraints, and deterministic execution** — helping agents produce **predictable, maintainable, production-ready software** instead of vibe-driven improvisation.
 
-https://kycha-blog.org/posts/how-to-build-software-using-ai-agents-2026
+Learn more: [https://kycha-blog.org/posts/how-to-build-software-using-ai-agents-2026](https://kycha-blog.org/posts/how-to-build-software-using-ai-agents-2026)
 
-## Installing Agent Skills
+---
 
-- Create a `.claude/skills` directory in your project repository (create the `.claude` folder first if it does not exist).
-- Copy the entire skill folder into `.claude/skills/<skill-name>` so the agent can automatically detect and load it.
+## 🚀 Installing Agent Skills
 
-## Installation Recommendations
+1. Create a `.claude/skills` directory in your repository
+2. Copy each skill folder into `.claude/skills/<skill-name>`
+3. The agent will automatically detect and load the skills
 
-When working in a team, add the `.claude` folder to the `.gitignore` file. This helps each developer on the team use only the skills they need and they can customize the how they see fit.
+### Team Workflow Recommendation
 
-Below you can find description and recommendations for each skill in the repository.
+Add `.claude` to `.gitignore` so every developer can:
 
-## feature-spec-generator
+- use only the skills they need
+- customize skills locally
+- avoid polluting the shared repository
 
-Turns vague feature ideas into clear, enforceable, implementation-ready specifications that prevent ambiguity, scope drift, and accidental re-interpretation during development. For **spec-driven development**.
+Below are descriptions and usage recommendations for each included skill.
 
-### Development Workflow
+---
 
-- Ask the agent to create a spec for the feature. Example: `Let's generate a spec for the feature to migrate from LangSmith to LangFuse`.
-- Find the generated `SPEC.md` file in the `.claude` repository.
-- Review the spec file and make changes
-- Ask the agent to implement the feature. Example `Implement the feature defined in the .claude/skills/feature-spec-generator/SPEC.md` file.
+## 🎯 `feature-spec-generator`
 
-## backend-integration
+Transforms vague feature ideas into **clear, enforceable, implementation-ready specifications** that eliminate ambiguity, scope drift, and accidental reinterpretation. Built for **spec-driven development**.
 
-Ensures that the **front-end implementation** remains fully compatible with the Backend Server API by referencing and strictly adhering to the Server API Specification.
+### Suggested Workflow
 
-### Development Workflow
+- Ask the agent to generate a feature spec
+  Example:
+  `Generate a SPEC.md for migrating from LangSmith to LangFuse.`
+- Review and refine the generated `SPEC.md`
+- Then ask the agent to implement the feature strictly according to the spec
+  Example:
+  `Implement the feature defined in .claude/skills/feature-spec-generator/SPEC.md`
 
-- Switch to the backend repo.
-- Ask the agent to generate an `ENDPOINTS.md` file. Example:
-  `Rigorously review all the server endpoints and create an ENDPOINTS.md file where you capture all the endpoints interfaces and data models used in this endpoints including DTOs and responses`.
-- Copy the `ENDPOINTS.md` file and put it into the `.claude/skills/backend-integration/ENDPOINTS.md` file.
-- Ask the agent to implement a backend-integration for the feature
+---
 
-**Note**: This skill can be paired with the `feature-spec-generator` skill to develop in the spec-driven fashion.
+## 🔗 `backend-integration`
 
-Just ask add the `feature-spec-generator` skill and ask the agent to create a spec for the feature. Then, ask the agent to implement backend-integration for the feature defined in the `.claude/skills/feature-spec-generator/SPEC.md` file.
+Ensures the **frontend implementation stays fully aligned with the Backend API** by referencing and strictly following the **Server API Specification**.
+
+### Suggested Workflow
+
+1. Open the backend repository
+2. Ask the agent to generate an `ENDPOINTS.md` file, including interfaces, DTOs, and response models
+3. Copy the file to `.claude/skills/backend-integration/ENDPOINTS.md`
+4. Ask the agent to implement backend integration for the feature
+
+### Pairing With Spec-Driven Development
+
+This skill works best when combined with `feature-spec-generator`:
+
+- Generate the feature spec first
+- Then implement backend integration **based on the same source-of-truth spec**
+
+This creates **consistent, deterministic, and verifiable AI-assisted development workflows**.
