@@ -100,4 +100,4 @@ The generated spec must include the following sections in order:
 
 ## Spec Output
 
-$CWD/SPEC.md
+$CWD/.claude/skills/feature-spec-generator/SPEC.md
